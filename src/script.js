@@ -90,6 +90,8 @@
   (function () {
     var track = document.getElementById('gallery-track');
     var dotsContainer = document.getElementById('gallery-dots');
+    var prevBtn = document.getElementById('gallery-prev');
+    var nextBtn = document.getElementById('gallery-next');
     if (!track || !dotsContainer) return;
 
     var slides = track.querySelectorAll('.gallery-slide');
@@ -137,6 +139,18 @@
     }
     updateDots();
 
+    // Navegação por setas
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function () {
+        goTo(currentIndex - 1);
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () {
+        goTo(currentIndex + 1);
+      });
+    }
+
     function onPointerDown(e) {
       isDragging = true;
       hasMoved = false;
@@ -168,7 +182,8 @@
       var endX = ev && (ev.type.indexOf('touch') >= 0 && ev.changedTouches && ev.changedTouches[0])
         ? ev.changedTouches[0].clientX
         : (ev && ev.clientX);
-      var diff = endX != null ? startX - endX : 0;
+      // Mesmo sinal usado no movimento: posição atual menos posição inicial
+      var diff = endX != null ? endX - startX : 0;
       var currentOffset = dragStartOffset + diff;
       var slideWidth = containerWidth();
       var newIndex = Math.round(-currentOffset / slideWidth);
