@@ -4,7 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Camping das Estrelas | Caconde - SP | Reservas via WhatsApp</title>
-  <meta name="description" content="Conecte-se com a natureza no Camping das Estrelas em Caconde-SP. Barracas, cabanas, piscina e céu estrelado. Reservas pelo WhatsApp." />
+  <meta name="description" content="Camping das Estrelas em Caconde SP. Um dos melhores campings de Caconde para quem busca natureza, tranquilidade e um céu estrelado incrível. Descubra lugares turísticos em Caconde e viva essa experiência." />
+  <meta name="keywords" content="camping das estrelas, camping caconde, camping das estrelas caconde, lugares turísticos caconde, turismo caconde, o que fazer em caconde, camping em caconde sp, camping barato caconde, camping natureza caconde, represa de caconde camping" />
+  <meta name="author" content="Camping das Estrelas" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Varela+Round&display=swap" rel="stylesheet" />
@@ -12,149 +14,171 @@
   <link rel="stylesheet" href="src/styles.css" />
 </head>
 <body>
-  <!-- Header -->
-  <header class="header">
-<button class="menu-btn" id="menu-btn" aria-label="Abrir menu" aria-expanded="false">
+  <header class="cabecalho">
+<button class="botao-menu" id="botao-menu" aria-label="Abrir menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
-    <a href="#hero" class="logo">Camping das Estrelas</a>
-    <span class="header-spacer" aria-hidden="true"></span>
+    <a href="#inicio" class="marca">Camping das Estrelas</a>
+    <span class="espaco-cabecalho" aria-hidden="true"></span>
   </header>
 
-  <!-- Menu overlay -->
-  <nav class="nav-overlay" id="nav-overlay" aria-hidden="true">
-    <ul class="nav-links">
-      <li><a href="#hero">Início</a></li>
+  <nav class="menu-lateral" id="menu-lateral" aria-hidden="true">
+    <ul class="links-menu">
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#destino">Sobre</a></li>
       <li><a href="#galeria">Galeria</a></li>
       <li><a href="#estrutura">Estrutura</a></li>
       <li><a href="#cabanas">Cabanas</a></li>
       <li><a href="#precos">Preços</a></li>
       <li><a href="#regras">Reservas</a></li>
+      <li><a href="#avaliacoes">Avaliações</a></li>
       <li><a href="#localizacao">Como chegar</a></li>
-      <li><a href="#whatsapp" class="nav-whatsapp">Reservar pelo WhatsApp</a></li>
+      <li><a href="#whatsapp" class="link-whatsapp-menu">Reservar pelo WhatsApp</a></li>
     </ul>
   </nav>
-  <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+  <div class="fundo-menu" id="fundo-menu" aria-hidden="true"></div>
 
-  <!-- Hero -->
-  <section class="hero" id="hero">
-    <div class="hero-media">
-      <video class="hero-video" autoplay muted loop playsinline poster="src/img/Ceu estrelado.png" aria-hidden="true">
+  <section class="inicio" id="inicio">
+    <div class="midia-inicio">
+      <video class="video-inicio" autoplay muted loop playsinline poster="src/img/Ceu estrelado.png" aria-hidden="true">
         <source src="src/img/video.mp4" type="video/mp4" />
       </video>
-      <div class="hero-overlay"></div>
-      <div class="hero-gradient"></div>
+      <div class="sobreposicao-inicio"></div>
+      <div class="degrade-inicio"></div>
     </div>
-    <div class="hero-content">
-      <p class="hero-badge reveal">CAMPING EM CACONDE - SP</p>
-      <h1 class="hero-title reveal">
-        <span>Camping das</span> <span class="highlight">Estrelas</span>
+    <div class="conteudo-inicio">
+      <p class="selo-inicio revelar">CAMPING EM CACONDE - SP</p>
+      <h1 class="titulo-inicio revelar">
+        <span>Camping das</span> <span class="destaque-inicio">Estrelas</span>
       </h1>
-      <p class="hero-subtitle reveal">Conecte-se com a natureza e viva uma experiência única sob as estrelas.</p>
+      <p class="subtitulo-inicio revelar">Conecte-se com a natureza e viva uma experiência única sob as estrelas.</p>
     </div>
   </section>
 
-  <!-- Galeria -->
-  <section class="section gallery" id="galeria">
-    <div class="container">
-      <p class="section-tag reveal">FOTOS</p>
-      <h2 class="section-title reveal">Nossa experiência</h2>
-      <div class="gallery-carousel reveal" id="gallery-carousel">
-        <button class="gallery-arrow gallery-arrow-prev" id="gallery-prev" type="button" aria-label="Foto anterior">&#10094;</button>
-        <div class="gallery-carousel-track" id="gallery-track">
-          <a href="src/img/Barracas.png" class="gallery-slide" data-lightbox>
-            <img src="src/img/Barracas.png" alt="Barracas no camping" loading="lazy" />
-            <span class="gallery-slide-caption">Barracas</span>
-          </a>
-          <a href="src/img/Area Verde.png" class="gallery-slide" data-lightbox>
-            <img src="src/img/Area Verde.png" alt="Área verde" loading="lazy" />
-            <span class="gallery-slide-caption">Área verde</span>
-          </a>
-          <a href="src/img/Piscina.png" class="gallery-slide" data-lightbox>
-            <img src="src/img/Piscina.png" alt="Piscina" loading="lazy" />
-            <span class="gallery-slide-caption">Piscina</span>
-          </a>
-          <a href="src/img/Cozinha.png" class="gallery-slide" data-lightbox>
-            <img src="src/img/Cozinha.png" alt="Cozinha" loading="lazy" />
-            <span class="gallery-slide-caption">Cozinha</span>
-          </a>
-          <a href="src/img/Cabanas.png" class="gallery-slide" data-lightbox>
-            <img src="src/img/Cabanas.png" alt="Cabanas" loading="lazy" />
-            <span class="gallery-slide-caption">Cabanas</span>
-          </a>
-          <a href="src/img/Ceu estrelado.png" class="gallery-slide" data-lightbox>
-            <img src="src/img/Ceu estrelado.png" alt="Céu estrelado" loading="lazy" />
-            <span class="gallery-slide-caption">Céu estrelado</span>
-          </a>
-          <a href="src/img/Paisagem.png" class="gallery-slide" data-lightbox>
-            <img src="src/img/Paisagem.png" alt="Céu estrelado" loading="lazy" />
-            <span class="gallery-slide-caption">Paisagem</span>
-          </a>
-          <a href="src/img/Placa.png" class="gallery-slide" data-lightbox>
-            <img src="src/img/Placa.png" alt="Céu estrelado" loading="lazy" />
-            <span class="gallery-slide-caption">Plaquinhas</span>
-          </a>
-          <a href="src/img/Paisagem1.png" class="gallery-slide" data-lightbox>
-            <img src="src/img/Paisagem1.png" alt="Céu estrelado" loading="lazy" />
-            <span class="gallery-slide-caption">Paisagem 1</span>
-          </a>
-        </div>
-        <button class="gallery-arrow gallery-arrow-next" id="gallery-next" type="button" aria-label="Próxima foto">&#10095;</button>
-        <div class="gallery-carousel-dots" id="gallery-dots" aria-hidden="true"></div>
+  <section class="secao destino" id="destino">
+    <div class="conteiner">
+      <div class="bloco-destino revelar">
+        <p class="etiqueta-secao">CAMPING EM CACONDE</p>
+        <h2 class="titulo-secao">Seu refúgio natural em Caconde</h2>
+        <p>
+          O <strong>Camping das Estrelas em Caconde</strong> é um refúgio natural perfeito para quem busca um
+          <strong>camping em Caconde</strong> com tranquilidade e contato direto com a natureza. Localizado em uma das
+          regiões mais bonitas do interior de São Paulo, é ideal para quem deseja conhecer os principais
+          <strong>lugares turísticos de Caconde</strong>.
+        </p>
+        <p>
+          Rodeado por uma abundante paisagem natural, o <strong>Camping das Estrelas Caconde</strong> oferece uma
+          experiência única com piscina aquecida, trilhas deslumbrantes e fácil acesso a cachoeiras da região.
+          É uma excelente opção para quem procura <strong>turismo em Caconde</strong> com conforto e aventura.
+        </p>
+        <p>
+          O espaço conta com chuveiros quentes, banheiros individuais e cozinha comunitária, garantindo comodidade
+          para quem deseja acampar com segurança. Se você está procurando <strong>onde acampar em Caconde</strong>,
+          o Camping das Estrelas é o destino ideal para relaxar e aproveitar a natureza.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- Estrutura -->
-  <section class="section structure" id="estrutura">
-    <div class="container">
-      <p class="section-tag reveal">CONFORTO TOTAL</p>
-      <h2 class="section-title reveal">Nossa Estrutura</h2>
-      <div class="structure-list reveal">
-        <div class="structure-item">
-          <i data-lucide="tent" class="structure-icon"></i>
+  <section class="secao galeria" id="galeria">
+    <div class="conteiner">
+      <p class="etiqueta-secao revelar">FOTOS</p>
+      <h2 class="titulo-secao revelar">Nossa experiência</h2>
+      <div class="carrossel-galeria revelar" id="carrossel-galeria">
+        <button class="seta-galeria seta-galeria-anterior" id="galeria-anterior" type="button" aria-label="Foto anterior">&#10094;</button>
+        <div class="trilha-galeria" id="trilha-galeria">
+          <a href="src/img/Barracas.png" class="slide-galeria" data-luz>
+            <img src="src/img/Barracas.png" alt="Barracas no camping" loading="lazy" />
+            <span class="legenda-slide-galeria">Barracas</span>
+          </a>
+          <a href="src/img/Area Verde.png" class="slide-galeria" data-luz>
+            <img src="src/img/Area Verde.png" alt="Área verde" loading="lazy" />
+            <span class="legenda-slide-galeria">Área verde</span>
+          </a>
+          <a href="src/img/Piscina.png" class="slide-galeria" data-luz>
+            <img src="src/img/Piscina.png" alt="Piscina" loading="lazy" />
+            <span class="legenda-slide-galeria">Piscina</span>
+          </a>
+          <a href="src/img/Cozinha.png" class="slide-galeria" data-luz>
+            <img src="src/img/Cozinha.png" alt="Cozinha" loading="lazy" />
+            <span class="legenda-slide-galeria">Cozinha</span>
+          </a>
+          <a href="src/img/Cabanas.png" class="slide-galeria" data-luz>
+            <img src="src/img/Cabanas.png" alt="Cabanas" loading="lazy" />
+            <span class="legenda-slide-galeria">Cabanas</span>
+          </a>
+          <a href="src/img/Ceu estrelado.png" class="slide-galeria" data-luz>
+            <img src="src/img/Ceu estrelado.png" alt="Céu estrelado" loading="lazy" />
+            <span class="legenda-slide-galeria">Céu estrelado</span>
+          </a>
+          <a href="src/img/Paisagem.png" class="slide-galeria" data-luz>
+            <img src="src/img/Paisagem.png" alt="Céu estrelado" loading="lazy" />
+            <span class="legenda-slide-galeria">Paisagem</span>
+          </a>
+          <a href="src/img/Placa.png" class="slide-galeria" data-luz>
+            <img src="src/img/Placa.png" alt="Céu estrelado" loading="lazy" />
+            <span class="legenda-slide-galeria">Plaquinhas</span>
+          </a>
+          <a href="src/img/Paisagem1.png" class="slide-galeria" data-luz>
+            <img src="src/img/Paisagem1.png" alt="Céu estrelado" loading="lazy" />
+            <span class="legenda-slide-galeria">Paisagem 1</span>
+          </a>
+        </div>
+        <button class="seta-galeria seta-galeria-proxima" id="galeria-proxima" type="button" aria-label="Próxima foto">&#10095;</button>
+        <div class="pontos-galeria" id="pontos-galeria" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao estrutura" id="estrutura">
+    <div class="conteiner">
+      <p class="etiqueta-secao revelar">CONFORTO TOTAL</p>
+      <h2 class="titulo-secao revelar">Nossa Estrutura</h2>
+      <div class="lista-estrutura revelar">
+        <div class="item-estrutura">
+          <i data-lucide="tent" class="icone-estrutura"></i>
           <div>
             <h3>Áreas planas e gramadas</h3>
             <p>Platôs preparados para barracas</p>
           </div>
         </div>
-        <div class="structure-item">
-          <i data-lucide="home" class="structure-icon"></i>
+        <div class="item-estrutura">
+          <i data-lucide="home" class="icone-estrutura"></i>
           <div>
             <h3>Cabanas com cama de casal</h3>
             <p>Conforto e praticidade</p>
           </div>
         </div>
-        <div class="structure-item">
-          <i data-lucide="zap" class="structure-icon"></i>
+        <div class="item-estrutura">
+          <i data-lucide="zap" class="icone-estrutura"></i>
           <div>
             <h3>Pias e energia 110V</h3>
             <p>Pias comunitárias próximas às barracas</p>
           </div>
         </div>
-        <div class="structure-item">
-          <i data-lucide="utensils-crossed" class="structure-icon"></i>
+        <div class="item-estrutura">
+          <i data-lucide="utensils-crossed" class="icone-estrutura"></i>
           <div>
             <h3>Cozinha comunitária</h3>
             <p>Geladeira, fogão, forno, micro-ondas e utensílios</p>
           </div>
         </div>
-        <div class="structure-item">
-          <i data-lucide="droplets" class="structure-icon"></i>
+        <div class="item-estrutura">
+          <i data-lucide="droplets" class="icone-estrutura"></i>
           <div>
             <h3>Banheiros e chuveiros quentes</h3>
             <p>Banheiros individuais com água quente</p>
           </div>
         </div>
-        <div class="structure-item">
-          <i data-lucide="waves" class="structure-icon"></i>
+        <div class="item-estrutura">
+          <i data-lucide="waves" class="icone-estrutura"></i>
           <div>
             <h3>Piscina climatizada</h3>
             <p>Aquecimento solar</p>
           </div>
         </div>
-        <div class="structure-item">
-          <i data-lucide="circle-dot" class="structure-icon"></i>
+        <div class="item-estrutura">
+          <i data-lucide="circle-dot" class="icone-estrutura"></i>
           <div>
             <h3>Quadra de areia</h3>
             <p>Lazer e esporte</p>
@@ -164,18 +188,17 @@
     </div>
   </section>
 
-  <!-- Cabanas -->
-  <section class="section cabins" id="cabanas">
-    <div class="container">
-      <div class="cabins-inner reveal">
-        <div class="cabins-media">
+  <section class="secao cabanas" id="cabanas">
+    <div class="conteiner">
+      <div class="conteudo-cabanas revelar">
+        <div class="midia-cabanas">
           <img src="src/img/Cabanas.png" alt="Cabana no Camping das Estrelas" loading="lazy" />
         </div>
-        <div class="cabins-content">
-          <p class="section-tag">CABANAS</p>
-          <h2 class="section-title">Acomodações com conforto</h2>
-          <p class="cabins-text">O camping conta com <strong>3 cabanas</strong> com cama de casal, tomadas 110V e ventilador. É necessário trazer roupa de cama.</p>
-          <div class="cabins-warning">
+        <div class="texto-cabanas">
+          <p class="etiqueta-secao">CABANAS</p>
+          <h2 class="titulo-secao">Acomodações com conforto</h2>
+          <p class="descricao-cabanas">O camping conta com <strong>3 cabanas</strong> com cama de casal, tomadas 110V e ventilador. É necessário trazer roupa de cama.</p>
+          <div class="aviso-cabanas">
             <i data-lucide="info" width="24" height="24"></i>
             <span>Não possuem banheiro privativo</span>
           </div>
@@ -184,62 +207,60 @@
     </div>
   </section>
 
-  <!-- Preços -->
-  <section class="section pricing" id="precos">
-    <div class="container">
-      <p class="section-tag reveal">VALORES</p>
-      <h2 class="section-title reveal">Tabela de preços</h2>
-      <div class="pricing-whatsapp-badge reveal">
+  <section class="secao precos" id="precos">
+    <div class="conteiner">
+      <p class="etiqueta-secao revelar">VALORES</p>
+      <h2 class="titulo-secao revelar">Tabela de preços</h2>
+      <div class="selo-whatsapp-precos revelar">
         <i data-lucide="message-circle" width="20" height="20"></i>
         Reservas somente via WhatsApp
       </div>
-      <div class="pricing-grid reveal">
-        <div class="pricing-card">
+      <div class="grade-precos revelar">
+        <div class="card-preco">
           <h3>Barraca</h3>
-          <p class="pricing-desc">Não trabalhamos com aluguel de barracas</p>
-          <p class="pricing-value">R$ 25,00<span>/diária</span></p>
+          <p class="descricao-preco">Não trabalhamos com aluguel de barracas</p>
+          <p class="valor-preco">R$ 25,00<span>/diária</span></p>
         </div>
-        <div class="pricing-card pricing-card-featured">
+        <div class="card-preco card-preco-destaque">
           <h3>Cabana</h3>
-          <p class="pricing-desc">Mínimo 2 pessoas</p>
-          <p class="pricing-value">R$ 40,00<span>/diária</span></p>
-          <p class="pricing-extra">1 pessoa: R$ 50,00/dia</p>
+          <p class="descricao-preco">Mínimo 2 pessoas</p>
+          <p class="valor-preco">R$ 40,00<span>/diária</span></p>
+          <p class="extra-preco">1 pessoa: R$ 50,00/dia</p>
         </div>
       </div>
-      <div class="pricing-rules reveal">
+      <div class="regras-preco revelar">
         <h4>Regras de idade</h4>
         <ul>
-          <li><i data-lucide="check" class="rule-check"></i> Crianças até 8 anos: grátis</li>
-          <li><i data-lucide="check" class="rule-check"></i> 8 a 12 anos: meia</li>
-          <li><i data-lucide="check" class="rule-check"></i> Acima de 12 anos: valor integral</li>
+          <li><i data-lucide="check" class="icone-regra-preco"></i> Crianças até 8 anos: grátis</li>
+          <li><i data-lucide="check" class="icone-regra-preco"></i> 8 a 12 anos: meia</li>
+          <li><i data-lucide="check" class="icone-regra-preco"></i> Acima de 12 anos: valor integral</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- Reservas e Regras -->
-  <section class="section rules" id="regras">
-    <div class="container">
-      <p class="section-tag reveal">RESERVAS</p>
-      <h2 class="section-title reveal">Reservas e regras</h2>
-      <div class="rules-grid reveal">
-        <div class="rules-card">
-          <div class="rules-icon"><i data-lucide="percent" width="28" height="28"></i></div>
+  <section class="secao regras" id="regras">
+    <div class="conteiner">
+      <p class="etiqueta-secao revelar">RESERVAS</p>
+      <h2 class="titulo-secao revelar">Reservas e regras</h2>
+      <div class="grade-regras revelar">
+        <div class="card-regra">
+          <div class="icone-regra"><i data-lucide="percent" width="28" height="28"></i></div>
           <h3>Pagamento antecipado</h3>
           <p>30% do valor para garantir sua reserva</p>
         </div>
-        <div class="rules-card">
-          <div class="rules-icon"><i data-lucide="x-circle" width="28" height="28"></i></div>
+        <div class="card-regra">
+          <div class="icone-regra"><i data-lucide="x-circle" width="28" height="28"></i></div>
           <h3>Desistência</h3>
           <p>Não há devolução em caso de desistência</p>
         </div>
-        <div class="rules-card">
-          <div class="rules-icon"><i data-lucide="calendar-clock" width="28" height="28"></i></div>
+        <div class="card-regra">
+          <div class="icone-regra"><i data-lucide="calendar-clock" width="28" height="28"></i></div>
           <h3>Remarcação</h3>
           <p>Possibilidade de remarcar com antecedência</p>
         </div>
-        <div class="rules-card">
-          <div class="rules-icon"><i data-lucide="calendar-check" width="28" height="28"></i></div>
+        <div class="card-regra">
+          <div class="icone-regra"><i data-lucide="calendar-check" width="28" height="28"></i></div>
           <h3>Prazo</h3>
           <p>Remarcação válida até 3 meses</p>
         </div>
@@ -247,25 +268,69 @@
     </div>
   </section>
 
-  <!-- CTA Final -->
-  <section class="section cta">
-    <div class="container">
-      <div class="cta-inner reveal">
+  <section class="secao avaliacoes" id="avaliacoes">
+    <div class="conteiner">
+      <p class="etiqueta-secao revelar">AVALIAÇÕES REAIS</p>
+      <h2 class="titulo-secao revelar">Quem visita, recomenda</h2>
+      <div class="grade-avaliacoes revelar">
+        <article class="card-avaliacao">
+          <div class="estrelas-avaliacao" aria-label="5 estrelas">
+            <span aria-hidden="true">★★★★★</span>
+            <small>5,0 no Google</small>
+          </div>
+          <p>
+            Uma experiência inexplicável, camping com ótima estrutura, 2 cozinhas completas, banheiros com duchas
+            quentes e super limpos. Os donos do camping são extremamente simpáticos e com uma vibe muito boa.
+            Voltaremos mais vezes com certeza.
+          </p>
+          <h3>Visitante no Google</h3>
+        </article>
+        <article class="card-avaliacao">
+          <div class="estrelas-avaliacao" aria-label="5 estrelas">
+            <span aria-hidden="true">★★★★★</span>
+            <small>5,0 no Google</small>
+          </div>
+          <p>
+            Gabriela e o César são super receptivos, o local é bem equipado, limpinho e cuidado. Tem espaço pra
+            barracas e cabanas de alvenaria. Fiquei em uma das cabanas, tem uma cama, ventilador, ganchinhos,
+            super tranquila. Estava sozinha e ainda assim me senti segura. Preços super acessíveis, uma boa
+            infraestrutura e uma experiência de paz.
+          </p>
+          <h3>Visitante no Google</h3>
+        </article>
+        <article class="card-avaliacao">
+          <div class="estrelas-avaliacao" aria-label="5 estrelas">
+            <span aria-hidden="true">★★★★★</span>
+            <small>5,0 no Google</small>
+          </div>
+          <p>
+            Lugar maravilhoso, perfeito para quem procura contato com a natureza, paz e tranquilidade. Cesar e
+            Gabriela são muito receptivos, simpáticos e sempre preocupados com nosso bem-estar, fazendo a gente
+            se sentir super à vontade.
+          </p>
+          <h3>Visitante no Google</h3>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao chamada">
+    <div class="conteiner">
+      <div class="chamada-interna revelar">
         <h2>Pronto para viver essa magia?</h2>
         <p>Tire suas dúvidas e garanta sua vaga pelo botão de reserva.</p>
       </div>
     </div>
   </section>
 
-  <!-- Como chegar -->
-  <section class="section location" id="localizacao">
-    <div class="container">
-      <h2 class="section-title reveal">Como chegar</h2>
-      <div class="location-card reveal">
-        <div class="location-map">
+  <section class="secao localizacao" id="localizacao">
+    <div class="conteiner">
+      <h2 class="titulo-secao revelar">Como chegar</h2>
+      <div class="card-localizacao revelar">
+        <div class="mapa-localizacao">
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5932.899414755614!2d-46.614345!3d-21.5046665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b63bb62de30e3f%3A0x9e6ca0660e2580b8!2sCamping+das+Estrelas!5e0!3m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Camping das Estrelas - Localização exata, Caconde SP"></iframe>
         </div>
-        <div class="location-address">
+        <div class="endereco-localizacao">
           <i data-lucide="map-pin" width="24" height="24"></i>
           <div>
             <p><strong>Camping das Estrelas</strong></p>
@@ -276,41 +341,27 @@
     </div>
   </section>
 
-  <!-- Carrossel de palavras -->
-  <section class="carousel-words" aria-hidden="true">
-    <div class="carousel-words-track">
-      <span class="carousel-words-content">Natureza . Tranquilidade . Estrelas . Caconde . Família . Céu . Fogueira . Silêncio . Camping . Aventura . Lua . Gramado . Piscina . Descanso .</span>
-      <span class="carousel-words-content" aria-hidden="true">Natureza . Tranquilidade . Estrelas . Caconde . Família . Céu . Fogueira . Silêncio . Camping . Aventura . Lua . Gramado . Piscina . Descanso .</span>
+  <section class="carrossel-palavras" aria-hidden="true">
+    <div class="trilha-palavras">
+      <span class="conteudo-palavras">Natureza . Tranquilidade . Estrelas . Caconde . Família . Céu . Fogueira . Silêncio . Camping . Aventura . Lua . Gramado . Piscina . Descanso .</span>
+      <span class="conteudo-palavras" aria-hidden="true">Natureza . Tranquilidade . Estrelas . Caconde . Família . Céu . Fogueira . Silêncio . Camping . Aventura . Lua . Gramado . Piscina . Descanso .</span>
     </div>
   </section>
 
-  <!-- Encerramento -->
-  <section class="section closing">
-    <div class="container">
-      <div class="closing-inner reveal">
-        <p class="closing-tagline">Sob o céu de Caconde</p>
-        <h2 class="closing-title">Camping das Estrelas</h2>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
+  <footer class="rodape">
+    <div class="conteiner">
       <p>&copy; 2026 Camping das Estrelas. Todos os direitos reservados.</p>
     </div>
   </footer>
 
-  <!-- Botão WhatsApp flutuante -->
-  <a href="https://wa.me/5519996850753?text=Olá! Gostaria de fazer uma reserva no Camping das Estrelas." class="whatsapp-float" id="whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Fazer reserva pelo WhatsApp">
+  <a href="https://wa.me/5519996850753?text=Olá! Gostaria de fazer uma reserva no Camping das Estrelas." class="whatsapp-flutuante" id="whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Fazer reserva pelo WhatsApp">
     <i data-lucide="message-circle" width="28" height="28"></i>
     <span>Fazer Reserva</span>
   </a>
 
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizar imagem">
-    <button class="lightbox-close" aria-label="Fechar">×</button>
-    <img src="" alt="" class="lightbox-img" />
+  <div class="caixa-luz" id="caixa-luz" role="dialog" aria-modal="true" aria-label="Visualizar imagem">
+    <button class="fechar-caixa-luz" aria-label="Fechar">×</button>
+    <img src="" alt="" class="imagem-caixa-luz" />
   </div>
 
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>

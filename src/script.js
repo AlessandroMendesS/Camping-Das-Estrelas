@@ -1,274 +1,227 @@
-(function () {
+(() => {
   'use strict';
 
-  // ===== Menu hambúrguer =====
-  var menuBtn = document.getElementById('menu-btn');
-  var navOverlay = document.getElementById('nav-overlay');
-  var navBackdrop = document.getElementById('nav-backdrop');
+  const botaoMenu = document.getElementById('botao-menu');
+  const menuLateral = document.getElementById('menu-lateral');
+  const fundoMenu = document.getElementById('fundo-menu');
 
-  function openMenu() {
-    if (navOverlay) {
-      navOverlay.classList.add('open');
-      navOverlay.setAttribute('aria-hidden', 'false');
+  const abrirMenu = () => {
+    if (menuLateral) {
+      menuLateral.classList.add('aberto');
+      menuLateral.setAttribute('aria-hidden', 'false');
     }
-    if (navBackdrop) {
-      navBackdrop.classList.add('open');
-      navBackdrop.setAttribute('aria-hidden', 'false');
+    if (fundoMenu) {
+      fundoMenu.classList.add('aberto');
+      fundoMenu.setAttribute('aria-hidden', 'false');
     }
-    if (menuBtn) {
-      menuBtn.classList.add('active');
-      menuBtn.setAttribute('aria-expanded', 'true');
-      menuBtn.setAttribute('aria-label', 'Fechar menu');
+    if (botaoMenu) {
+      botaoMenu.classList.add('ativo');
+      botaoMenu.setAttribute('aria-expanded', 'true');
+      botaoMenu.setAttribute('aria-label', 'Fechar menu');
     }
     document.body.style.overflow = 'hidden';
-  }
+  };
 
-  function closeMenu() {
-    if (navOverlay) {
-      navOverlay.classList.remove('open');
-      navOverlay.setAttribute('aria-hidden', 'true');
+  const fecharMenu = () => {
+    if (menuLateral) {
+      menuLateral.classList.remove('aberto');
+      menuLateral.setAttribute('aria-hidden', 'true');
     }
-    if (navBackdrop) {
-      navBackdrop.classList.remove('open');
-      navBackdrop.setAttribute('aria-hidden', 'true');
+    if (fundoMenu) {
+      fundoMenu.classList.remove('aberto');
+      fundoMenu.setAttribute('aria-hidden', 'true');
     }
-    if (menuBtn) {
-      menuBtn.classList.remove('active');
-      menuBtn.setAttribute('aria-expanded', 'false');
-      menuBtn.setAttribute('aria-label', 'Abrir menu');
+    if (botaoMenu) {
+      botaoMenu.classList.remove('ativo');
+      botaoMenu.setAttribute('aria-expanded', 'false');
+      botaoMenu.setAttribute('aria-label', 'Abrir menu');
     }
     document.body.style.overflow = '';
-  }
+  };
 
-  if (menuBtn) {
-    menuBtn.addEventListener('click', function () {
-      if (navOverlay && navOverlay.classList.contains('open')) closeMenu();
-      else openMenu();
+  if (botaoMenu) {
+    botaoMenu.addEventListener('click', () => {
+      if (menuLateral && menuLateral.classList.contains('aberto')) fecharMenu();
+      else abrirMenu();
     });
   }
-  if (navBackdrop) navBackdrop.addEventListener('click', closeMenu);
+  if (fundoMenu) fundoMenu.addEventListener('click', fecharMenu);
 
-  document.querySelectorAll('.nav-links a').forEach(function (link) {
-    link.addEventListener('click', closeMenu);
+  document.querySelectorAll('.links-menu a').forEach((link) => {
+    link.addEventListener('click', fecharMenu);
   });
 
-  // ===== Hero vídeo fallback =====
-  var heroVideo = document.querySelector('.hero-video');
-  if (heroVideo) {
-    heroVideo.addEventListener('error', function () {
+  const videoInicio = document.querySelector('.video-inicio');
+  if (videoInicio) {
+    videoInicio.addEventListener('error', function () {
       this.style.display = 'none';
-      var media = document.querySelector('.hero-media');
-      if (media) {
-        var fallback = document.createElement('div');
-        fallback.className = 'hero-fallback';
-        fallback.style.cssText = 'position:absolute;inset:0;background:url(src/img/Ceu estrelado.png) center/cover no-repeat;';
-        media.insertBefore(fallback, heroVideo);
+      const midiaInicio = document.querySelector('.midia-inicio');
+      if (midiaInicio) {
+        const fundo = document.createElement('div');
+        fundo.style.cssText = 'position:absolute;inset:0;background:url(src/img/Ceu estrelado.png) center/cover no-repeat;';
+        midiaInicio.insertBefore(fundo, videoInicio);
       }
     });
-    if (heroVideo.readyState < 2) heroVideo.load();
+    if (videoInicio.readyState < 2) videoInicio.load();
   }
 
-  // ===== Scroll reveal =====
-  const revealEls = document.querySelectorAll('.reveal');
-  const observerOptions = { rootMargin: '0px 0px -60px 0px', threshold: 0.1 };
+  const elementosRevelar = document.querySelectorAll('.revelar');
+  const observador = new IntersectionObserver(
+    (entradas) => {
+      entradas.forEach((entrada) => {
+        if (entrada.isIntersecting) entrada.target.classList.add('visivel');
+      });
+    },
+    { rootMargin: '0px 0px -60px 0px', threshold: 0.1 }
+  );
 
-  const revealObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, observerOptions);
-
-  revealEls.forEach(function (el, i) {
+  elementosRevelar.forEach((el, indice) => {
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    el.style.transitionDelay = el.closest('.hero-content') ? (i * 0.1) + 's' : '0.2s';
-    revealObserver.observe(el);
+    el.style.transitionDelay = el.closest('.conteudo-inicio') ? `${indice * 0.1}s` : '0.2s';
+    observador.observe(el);
   });
 
-  // ===== Carrossel da galeria (arrastável) =====
-  (function () {
-    var track = document.getElementById('gallery-track');
-    var dotsContainer = document.getElementById('gallery-dots');
-    var prevBtn = document.getElementById('gallery-prev');
-    var nextBtn = document.getElementById('gallery-next');
-    if (!track || !dotsContainer) return;
+  (() => {
+    const trilha = document.getElementById('trilha-galeria');
+    const pontos = document.getElementById('pontos-galeria');
+    const anterior = document.getElementById('galeria-anterior');
+    const proxima = document.getElementById('galeria-proxima');
+    if (!trilha || !pontos) return;
 
-    var slides = track.querySelectorAll('.gallery-slide');
-    var count = slides.length;
-    if (count === 0) return;
+    const slides = trilha.querySelectorAll('.slide-galeria');
+    const total = slides.length;
+    if (total === 0) return;
 
-    var container = track.parentElement;
-    var containerWidth = function () { return container.offsetWidth; };
-    var currentIndex = 0;
-    var startX = 0;
-    var dragStartOffset = 0;
-    var isDragging = false;
-    var hasMoved = false;
+    const conteiner = trilha.parentElement;
+    const largura = () => conteiner.offsetWidth;
+    let indiceAtual = 0;
+    let inicioX = 0;
+    let inicioDeslocamento = 0;
+    let arrastando = false;
 
-    function getOffset() {
-      return -currentIndex * containerWidth();
-    }
-
-    function applyTransform(px) {
-      track.style.transform = 'translate3d(' + px + 'px, 0, 0)';
-    }
-
-    function goTo(index) {
-      currentIndex = Math.max(0, Math.min(index, count - 1));
-      applyTransform(getOffset());
-      updateDots();
-    }
-
-    function updateDots() {
-      var buttons = dotsContainer.querySelectorAll('button');
-      buttons.forEach(function (btn, i) {
-        btn.classList.toggle('active', i === currentIndex);
+    const deslocamentoAtual = () => -indiceAtual * largura();
+    const aplicar = (px) => {
+      trilha.style.transform = `translate3d(${px}px, 0, 0)`;
+    };
+    const atualizarPontos = () => {
+      pontos.querySelectorAll('button').forEach((botao, i) => {
+        botao.classList.toggle('ativo', i === indiceAtual);
       });
+    };
+    const irPara = (indice) => {
+      indiceAtual = Math.max(0, Math.min(indice, total - 1));
+      aplicar(deslocamentoAtual());
+      atualizarPontos();
+    };
+
+    for (let i = 0; i < total; i += 1) {
+      const botao = document.createElement('button');
+      botao.type = 'button';
+      botao.setAttribute('aria-label', `Ir para foto ${i + 1}`);
+      botao.addEventListener('click', () => irPara(i));
+      pontos.appendChild(botao);
     }
+    atualizarPontos();
 
-    // Criar dots
-    for (var i = 0; i < count; i++) {
-      var btn = document.createElement('button');
-      btn.type = 'button';
-      btn.setAttribute('aria-label', 'Ir para foto ' + (i + 1));
-      btn.addEventListener('click', function (idx) {
-        return function () { goTo(idx); };
-      }(i));
-      dotsContainer.appendChild(btn);
-    }
-    updateDots();
+    if (anterior) anterior.addEventListener('click', () => irPara(indiceAtual - 1));
+    if (proxima) proxima.addEventListener('click', () => irPara(indiceAtual + 1));
 
-    // Navegação por setas
-    if (prevBtn) {
-      prevBtn.addEventListener('click', function () {
-        goTo(currentIndex - 1);
-      });
-    }
-    if (nextBtn) {
-      nextBtn.addEventListener('click', function () {
-        goTo(currentIndex + 1);
-      });
-    }
+    const aoPressionar = (e) => {
+      arrastando = true;
+      trilha.setAttribute('data-movido', '0');
+      inicioX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+      inicioDeslocamento = deslocamentoAtual();
+      trilha.classList.add('arrastando');
+    };
+    const aoMover = (e) => {
+      if (!arrastando) return;
+      const x = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+      const diferenca = x - inicioX;
+      if (Math.abs(diferenca) > 8) trilha.setAttribute('data-movido', '1');
+      const maximo = 0;
+      const minimo = -(total - 1) * largura();
+      const proximo = Math.max(minimo, Math.min(maximo, inicioDeslocamento + diferenca));
+      aplicar(proximo);
+    };
+    const aoSoltar = (e) => {
+      if (!arrastando) return;
+      trilha.classList.remove('arrastando');
+      arrastando = false;
+      const fimX = e && e.type.includes('touch') && e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientX : e.clientX;
+      const diferenca = fimX != null ? fimX - inicioX : 0;
+      const indice = Math.round(-(inicioDeslocamento + diferenca) / largura());
+      irPara(indice);
+    };
 
-    function onPointerDown(e) {
-      isDragging = true;
-      hasMoved = false;
-      track.setAttribute('data-moved', '0');
-      startX = e.type.indexOf('touch') >= 0 ? e.touches[0].clientX : e.clientX;
-      dragStartOffset = getOffset();
-      track.classList.add('dragging');
-    }
-
-    function onPointerMove(e) {
-      if (!isDragging) return;
-      var x = e.type.indexOf('touch') >= 0 ? e.touches[0].clientX : e.clientX;
-      var diff = x - startX;
-      if (Math.abs(diff) > 8) {
-        hasMoved = true;
-        track.setAttribute('data-moved', '1');
-      }
-      var next = dragStartOffset + diff;
-      var max = 0;
-      var min = -(count - 1) * containerWidth();
-      next = Math.max(min, Math.min(max, next));
-      applyTransform(next);
-    }
-
-    function onPointerUp(ev) {
-      if (!isDragging) return;
-      track.classList.remove('dragging');
-      isDragging = false;
-      var endX = ev && (ev.type.indexOf('touch') >= 0 && ev.changedTouches && ev.changedTouches[0])
-        ? ev.changedTouches[0].clientX
-        : (ev && ev.clientX);
-      // Mesmo sinal usado no movimento: posição atual menos posição inicial
-      var diff = endX != null ? endX - startX : 0;
-      var currentOffset = dragStartOffset + diff;
-      var slideWidth = containerWidth();
-      var newIndex = Math.round(-currentOffset / slideWidth);
-      goTo(newIndex);
-    }
-
-    function onTouchEnd(ev) { onPointerUp(ev); }
-    function onMouseUp(ev) { onPointerUp(ev); }
-
-    track.addEventListener('mousedown', onPointerDown);
-    track.addEventListener('touchstart', onPointerDown, { passive: true });
-    window.addEventListener('mousemove', onPointerMove);
-    window.addEventListener('touchmove', onPointerMove, { passive: true });
-    window.addEventListener('mouseup', onMouseUp);
-    window.addEventListener('touchend', onTouchEnd, { passive: true });
-
-    window.addEventListener('resize', function () {
-      if (!isDragging) applyTransform(getOffset());
+    trilha.addEventListener('mousedown', aoPressionar);
+    trilha.addEventListener('touchstart', aoPressionar, { passive: true });
+    window.addEventListener('mousemove', aoMover);
+    window.addEventListener('touchmove', aoMover, { passive: true });
+    window.addEventListener('mouseup', aoSoltar);
+    window.addEventListener('touchend', aoSoltar, { passive: true });
+    window.addEventListener('resize', () => {
+      if (!arrastando) aplicar(deslocamentoAtual());
     });
   })();
 
-  // ===== Lightbox =====
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = lightbox && lightbox.querySelector('.lightbox-img');
-  const lightboxClose = lightbox && lightbox.querySelector('.lightbox-close');
+  const caixaLuz = document.getElementById('caixa-luz');
+  const imagemCaixaLuz = caixaLuz && caixaLuz.querySelector('.imagem-caixa-luz');
+  const fecharCaixaLuzBotao = caixaLuz && caixaLuz.querySelector('.fechar-caixa-luz');
 
-  document.querySelectorAll('[data-lightbox]').forEach(function (link) {
+  document.querySelectorAll('[data-luz]').forEach((link) => {
     link.addEventListener('click', function (e) {
-      var track = document.getElementById('gallery-track');
-      if (track && track.getAttribute('data-moved') === '1') {
+      const trilha = document.getElementById('trilha-galeria');
+      if (trilha && trilha.getAttribute('data-movido') === '1') {
         e.preventDefault();
-        track.setAttribute('data-moved', '0');
+        trilha.setAttribute('data-movido', '0');
         return;
       }
       e.preventDefault();
       const href = this.getAttribute('href');
       const alt = (this.querySelector('img') && this.querySelector('img').getAttribute('alt')) || '';
-      if (lightbox && lightboxImg && href) {
-        lightboxImg.src = href;
-        lightboxImg.alt = alt;
-        lightbox.classList.add('active');
+      if (caixaLuz && imagemCaixaLuz && href) {
+        imagemCaixaLuz.src = href;
+        imagemCaixaLuz.alt = alt;
+        caixaLuz.classList.add('ativa');
         document.body.style.overflow = 'hidden';
       }
     });
   });
 
-  function closeLightbox() {
-    if (lightbox) {
-      lightbox.classList.remove('active');
+  const fecharCaixaLuz = () => {
+    if (caixaLuz) {
+      caixaLuz.classList.remove('ativa');
       document.body.style.overflow = '';
     }
-  }
+  };
 
-  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-  if (lightbox) {
-    lightbox.addEventListener('click', function (e) {
-      if (e.target === lightbox) closeLightbox();
+  if (fecharCaixaLuzBotao) fecharCaixaLuzBotao.addEventListener('click', fecharCaixaLuz);
+  if (caixaLuz) {
+    caixaLuz.addEventListener('click', (e) => {
+      if (e.target === caixaLuz) fecharCaixaLuz();
     });
   }
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeLightbox();
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') fecharCaixaLuz();
   });
 
-  // ===== Header scroll =====
-  var header = document.querySelector('.header');
-  if (header) {
-    window.addEventListener('scroll', function () {
-      header.classList.toggle('scrolled', window.scrollY > 50);
+  const cabecalho = document.querySelector('.cabecalho');
+  if (cabecalho) {
+    window.addEventListener('scroll', () => {
+      cabecalho.classList.toggle('rolado', window.scrollY > 50);
     });
   }
 
-  // ===== Ícones Lucide =====
-  if (typeof lucide !== 'undefined' && lucide.createIcons) {
-    lucide.createIcons();
-  }
+  if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
 
-  // ===== Suavizar links âncora =====
-  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
-    const id = a.getAttribute('href');
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    const id = link.getAttribute('href');
     if (id === '#') return;
-    a.addEventListener('click', function (e) {
-      const target = document.querySelector(id);
-      if (target) {
+    link.addEventListener('click', (e) => {
+      const alvo = document.querySelector(id);
+      if (alvo) {
         e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        alvo.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
   });
