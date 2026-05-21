@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://campingdasestrelas.com.br/sitemap.xml
